@@ -3,33 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pollo Express - POS El Pollo Volador</title>
+    <title>Pollo Express - Sistema Integral</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>EL POLLO VOLADOR - POS</h1>
-        <p>Cajero: Juan Diego Torres | Caja #1</p>
+        <h1>EL POLLO VOLADOR - SISTEMA INTEGRAL</h1>
+        <p>Usuario: Juan Diego Torres | Rol: Administrador / POS</p>
     </header>
 
+    <nav class="nav-tabs">
+        <button class="tab-btn active" onclick="cambiarTab('pos', event)">CU-01: Caja POS</button>
+        <button class="tab-btn" onclick="cambiarTab('kds', event)">CU-02: Cocina KDS</button>
+        <button class="tab-btn" onclick="cambiarTab('sri', event)">CU-03: Facturación SRI</button>
+    </nav>
+
     <main class="container">
-        <section class="menu-section">
-            <h2>Menú Principal</h2>
-            <div class="products-grid">
-                <button onclick="agregarProducto('Pollo Volador Especial', 3.50)">Pollo Volador - $3.50</button>
-                <button onclick="agregarProducto('Salchipapa XL', 2.50)">Salchipapa XL - $2.50</button>
-                <button onclick="agregarProducto('Papas Lomo', 3.50)">Papas Lomo - $3.50</button>
-                <button onclick="agregarProducto('Gaseosa 500ml', 1.00)">Gaseosa 500ml - $1.00</button>
+        <section id="tab-pos" class="tab-content active">
+            <div class="pos-layout">
+                <div class="menu-section">
+                    <h2>Menú Principal</h2>
+                    <div class="products-grid">
+                        <button onclick="agregarProducto('Pollo Volador Especial', 3.50)">Pollo Volador - $3.50</button>
+                        <button onclick="agregarProducto('Salchipapa XL', 2.50)">Salchipapa XL - $2.50</button>
+                        <button onclick="agregarProducto('Papas Lomo', 3.50)">Papas Lomo - $3.50</button>
+                        <button onclick="agregarProducto('Gaseosa 500ml', 1.00)">Gaseosa 500ml - $1.00</button>
+                    </div>
+                </div>
+                <div class="order-section">
+                    <h2>Detalle del Pedido</h2>
+                    <ul id="lista-pedido"></ul>
+                    <div class="totals">
+                        <p>Total: $<span id="total-precio">0.00</span></p>
+                        <button onclick="procesarPago()">Procesar Pago e Imprimir Ticket</button>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="order-section">
-            <h2>Detalle del Pedido</h2>
-            <ul id="lista-pedido"></ul>
-            <div class="totals">
-                <p>Total: $<span id="total-precio">0.00</span></p>
-                <button onclick="procesarPago()">Procesar Pago e Imprimir Ticket</button>
-            </div>
+        <section id="tab-kds" class="tab-content">
+            <h2>Visor de Comandas - Cocina (KDS)</h2>
+            <div id="grid-cocina" class="kds-grid"></div>
+        </section>
+
+        <section id="tab-sri" class="tab-content">
+            <h2>Comprobantes Electrónicos SRI</h2>
+            <table class="sri-table">
+                <thead>
+                    <tr>
+                        <th># Turno</th>
+                        <th>Fecha / Hora</th>
+                        <th>Total</th>
+                        <th>Clave de Acceso</th>
+                        <th>Estado SRI</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-sri"></tbody>
+            </table>
         </section>
     </main>
 
