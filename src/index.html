@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pollo Express - POS El Pollo Volador</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>EL POLLO VOLADOR - POS</h1>
+        <p>Cajero: Juan Diego Torres | Caja #1</p>
+    </header>
+
+    <main class="container">
+        <section class="menu-section">
+            <h2>Menú Principal</h2>
+            <div class="products-grid">
+                <button onclick="agregarProducto('Pollo Volador Especial', 3.50)">Pollo Volador - $3.50</button>
+                <button onclick="agregarProducto('Salchipapa XL', 2.50)">Salchipapa XL - $2.50</button>
+                <button onclick="agregarProducto('Papas Lomo', 3.50)">Papas Lomo - $3.50</button>
+                <button onclick="agregarProducto('Gaseosa 500ml', 1.00)">Gaseosa 500ml - $1.00</button>
+            </div>
+        </section>
+
+        <section class="order-section">
+            <h2>Detalle del Pedido</h2>
+            <ul id="lista-pedido"></ul>
+            <div class="totals">
+                <p>Total: $<span id="total-precio">0.00</span></p>
+                <button onclick="procesarPago()">Procesar Pago e Imprimir Ticket</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
